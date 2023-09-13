@@ -727,7 +727,7 @@ input[type="checkbox"] {
 }
 
 @media (width < 700px) {
-  .educations-inner {
+  .educations-inner, .experiences-inner {
     justify-content: center;
     /* text-align: center; */
   }

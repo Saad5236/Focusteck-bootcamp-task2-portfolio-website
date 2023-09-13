@@ -73,6 +73,11 @@ addEducationModalForm.addEventListener("submit", (e) => {
   addEducationModal.close();
 });
 
+// EXPERIENCE'S FUNCTIONS
+const refreshExperienceContainer = () => {
+
+}
+
 // EDUCATION'S FUNCTIONS
 const refreshEducationContainer = () => {
   allEducationsContainer.innerHTML = "";
@@ -112,6 +117,7 @@ const refreshEducationContainer = () => {
     let educationYearsInput = document.querySelector(
       "#add-new-education-modal .education-years"
     );
+    // adding data in modal's input fields for updation
     userEducationUpdate.addEventListener("click", (e) => {
       e.stopPropagation();
       addEducationModal.showModal();
@@ -195,8 +201,8 @@ const addUserEducationEvent = (e) => {
 
   refreshEducationContainer();
 
-  addEducationModalForm.removeEventListener("submit", addUserEducationEvent);
-  addEducationModalForm.addEventListener("submit", updateUserEducationEvent);
+  // addEducationModalForm.removeEventListener("submit", addUserEducationEvent);
+  // addEducationModalForm.addEventListener("submit", updateUserEducationEvent);
   addEducationModal.close();
 };
 

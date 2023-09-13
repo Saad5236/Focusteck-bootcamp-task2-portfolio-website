@@ -23,7 +23,7 @@ const generateId = () => {
     id = Math.floor(Math.random() * (999999 - 100000) + 100000);
     let usersData = JSON.parse(localStorage.getItem("usersData"));
 
-    if (usersData.find((i) => i.userId === id)) {
+    if (usersData && usersData.find((i) => i.userId === id)) {
       continue;
     } else {
       break;
@@ -56,11 +56,7 @@ signupForm.addEventListener("submit", (e) => {
 
     let allUsersData = JSON.parse(localStorage.getItem("usersData"));
 
-    if (
-      !allUsersData.find(
-        (data) => data.userEmail === signupFormData.get("signup-email")
-      )
-    ) {
+    if (!allUsersData || (allUsersData && !allUsersData.find((data) => data.userEmail === signupFormData.get("signup-email")))) {
       let newUserData = {
         userId: generateId(),
         userRole: "user", // alternatively admin
