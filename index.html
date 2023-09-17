@@ -30,10 +30,93 @@
       </label>
       <ul>
         <li><a class="active" href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
+        <li class="update-profile-btn"><a href="#">Profile</a></li>
         <li class="navbar-logout-btn"><a href="#">Logout</a></li>
       </ul>
+
+      <dialog id="update-portfolio-modal">
+        <article>
+          <section class="update-portfolio-inner">
+            <h3 class="update-portfolio-header">UPDATE PORTFOLIO</h3>
+            <form action="">
+              <input
+                type="text"
+                id="update-portfolio-user-name"
+                name="update-portfolio-user-name"
+                class="update-portfolio-user-name"
+                placeholder="User Name"
+              />
+
+              <input
+                type="text"
+                id="update-portfolio-user-number"
+                name="update-portfolio-user-number"
+                class="update-portfolio-user-number"
+                placeholder="User Number"
+              />
+
+              <input
+                type="text"
+                id="update-portfolio-user-profession"
+                name="update-portfolio-user-profession"
+                class="update-portfolio-user-profession"
+                placeholder="User Profession"
+              />
+
+              <!-- <input
+                type="text"
+                id="update-portfolio-img-src"
+                name="update-portfolio-img-src"
+                class="update-portfolio-img-src"
+                placeholder="User Image link"
+              /> -->
+              <input
+                type="file"
+                id="update-portfolio-img-src"
+                name="update-portfolio-img-src"
+                class="update-portfolio-img-src"
+                accept="image/*"
+              />
+
+              <textarea
+                cols="30"
+                rows="10"
+                type="text"
+                id="update-portfolio-user-about"
+                name="update-portfolio-user-about"
+                class="update-portfolio-user-about"
+                placeholder="User About me"
+              ></textarea>
+
+              <input
+                type="email"
+                id="update-portfolio-user-email"
+                name="update-portfolio-user-email"
+                class="update-portfolio-user-email"
+                placeholder="User Email"
+              />
+
+              <input
+                type="password"
+                id="update-portfolio-user-password"
+                name="update-portfolio-user-password"
+                class="update-portfolio-user-password"
+                placeholder="User Password"
+              />
+
+              <button class="update-portfolio-submit-btn">
+                Add new education
+              </button>
+            </form>
+          </section>
+
+          <button class="update-portfolio-close-btn">
+            <i class="fa-solid fa-xmark"></i> close
+          </button>
+        </article>
+      </dialog>
     </nav>
+
     <div class="content">
       <div>Responsive Navigation Menu Bar Design</div>
       <div>using only HTML & CSS</div>
@@ -45,9 +128,13 @@
         <!-- <div class="hero-content"> -->
         <h1>
           <div>
-            Hi, my name is <span class="blue-gradient-text">Saad Atif</span>
+            Hi, my name is
+            <span class="blue-gradient-text hero-user-name">Saad Atif</span>
           </div>
-          <div>I am a Full-stack Developer.</div>
+          <div>
+            I am a
+            <span class="hero-user-profession">Full-stack Developer</span>.
+          </div>
         </h1>
         <a href="#about-me"
           ><button class="btn-primary blue-gradient-text">Know more</button></a
@@ -64,8 +151,8 @@
         <div class="about-me-inner">
           <h2 class="about-me-header">ABOUT ME</h2>
           <div class="about-me-content">
-            <picture class="flex-center">
-              <img src="assets/images/about-me-img.jpg" alt="" />
+            <picture class="flex-center about-me-user-image">
+              <!-- <img src="assets/images/about-me-img.jpg" alt="" /> -->
             </picture>
             <div class="about-me-text">
               <p>
@@ -75,15 +162,12 @@
                 introduce innovative ideas. Beyond work, I love reading
                 non-fiction books and playing games. I'm an analytical thinker
                 who enjoys solving complex problems. My goal is to make a mark
-                in the industry.
-              </p>
-              <p>
-                I'm an introvert who values quiet moments but also enjoys making
-                friends and connecting with others. Building relationships
-                enriches both my personal and professional life. This mix of
-                introversion and sociability motivates me to collaborate and
-                innovate, as I work towards a brighter future in computer
-                science.
+                in the industry. I'm an introvert who values quiet moments but
+                also enjoys making friends and connecting with others. Building
+                relationships enriches both my personal and professional life.
+                This mix of introversion and sociability motivates me to
+                collaborate and innovate, as I work towards a brighter future in
+                computer science.
               </p>
               <button class="btn-secondary">View Resume</button>
             </div>
@@ -141,11 +225,18 @@
                     name="add-new-project-title"
                     placeholder="Project Title"
                   />
-                  <input
+                  <!-- <input
                     type="text"
                     id="add-new-project-img-src"
                     name="add-new-project-img-src"
                     placeholder="Project Image Source"
+                  /> -->
+                  <input
+                    type="file"
+                    id="add-new-project-img-src"
+                    name="add-new-project-img-src"
+                    class="add-new-project-img-src"
+                    accept="image/*"
                   />
                   <textarea
                     name="add-new-project-description"
@@ -211,11 +302,18 @@
                     name="update-project-title"
                     placeholder="Project Title"
                   />
-                  <input
+                  <!-- <input
                     type="text"
                     id="update-project-img-src"
                     name="update-project-img-src"
                     placeholder="Project Image Source"
+                  /> -->
+                  <input
+                    type="file"
+                    id="update-project-img-src"
+                    name="update-project-img-src"
+                    class="update-project-img-src"
+                    accept="image/*"
                   />
                   <textarea
                     name="update-project-description"
@@ -306,14 +404,16 @@
                   />
 
                   <input
-                  type="number"
-                  id="education-years"
-                  name="education-years"
-                  class="education-years"
-                  placeholder="Education Years"
-                />
+                    type="number"
+                    id="education-years"
+                    name="education-years"
+                    class="education-years"
+                    placeholder="Education Years"
+                  />
 
-                  <button class="add-new-education-submit-btn">Add new education</button>
+                  <button class="add-new-education-submit-btn">
+                    Add new education
+                  </button>
                 </form>
               </section>
 
@@ -352,14 +452,16 @@
                   />
 
                   <input
-                  type="number"
-                  id="update-education-years"
-                  name="update-education-years"
-                  class="update-education-years"
-                  placeholder="Education Years"
-                />
+                    type="number"
+                    id="update-education-years"
+                    name="update-education-years"
+                    class="update-education-years"
+                    placeholder="Education Years"
+                  />
 
-                  <button class="update-education-submit-btn">Add new education</button>
+                  <button class="update-education-submit-btn">
+                    Add new education
+                  </button>
                 </form>
               </section>
 
@@ -373,8 +475,7 @@
           <div class="add-new-education-btn">
             <button><i class="fa-solid fa-plus"></i> ADD EDUCATION</button>
           </div>
-          <div class="all-educations">
-          </div>
+          <div class="all-educations"></div>
         </div>
       </div>
 
@@ -389,37 +490,39 @@
                 <form action="">
                   <input
                     type="text"
-                    id="experience-degree"
-                    name="experience-degree"
-                    class="experience-degree"
-                    placeholder="experience Degree"
+                    id="experience-title"
+                    name="experience-title"
+                    class="experience-title"
+                    placeholder="experience title"
                   />
 
                   <input
                     type="text"
-                    id="experience-program"
-                    name="experience-program"
-                    class="experience-program"
-                    placeholder="experience Program"
+                    id="experience-company"
+                    name="experience-company"
+                    class="experience-company"
+                    placeholder="experience company"
                   />
 
                   <input
                     type="text"
-                    id="experience-institute"
-                    name="experience-institute"
-                    class="experience-institute"
-                    placeholder="experience institute"
+                    id="experience-skills"
+                    name="experience-skills"
+                    class="experience-skills"
+                    placeholder="experience skills"
                   />
 
                   <input
-                  type="number"
-                  id="experience-years"
-                  name="experience-years"
-                  class="experience-years"
-                  placeholder="experience Years"
-                />
+                    type="number"
+                    id="experience-years"
+                    name="experience-years"
+                    class="experience-years"
+                    placeholder="experience Years"
+                  />
 
-                  <button class="add-new-experience-submit-btn">Add new experience</button>
+                  <button class="add-new-experience-submit-btn">
+                    Add new experience
+                  </button>
                 </form>
               </section>
 
@@ -429,24 +532,82 @@
             </article>
           </dialog>
 
+          <dialog id="update-experience-modal">
+            <article>
+              <section class="update-experience-inner">
+                <h3>UPDATE EXPERIENCE</h3>
+                <form action="">
+                  <input
+                    type="text"
+                    id="update-experience-title"
+                    name="update-experience-title"
+                    class="update-experience-title"
+                    placeholder="experience title"
+                  />
+
+                  <input
+                    type="text"
+                    id="update-experience-company"
+                    name="update-experience-company"
+                    class="update-experience-company"
+                    placeholder="experience company"
+                  />
+
+                  <input
+                    type="text"
+                    id="update-experience-skills"
+                    name="update-experience-skills"
+                    class="update-experience-skills"
+                    placeholder="experience skills"
+                  />
+
+                  <input
+                    type="number"
+                    id="update-experience-years"
+                    name="update-experience-years"
+                    class="update-experience-years"
+                    placeholder="experience Years"
+                  />
+
+                  <button class="update-experience-submit-btn">
+                    Update experience
+                  </button>
+                </form>
+              </section>
+
+              <button class="update-experience-close-btn">
+                <i class="fa-solid fa-xmark"></i> close
+              </button>
+            </article>
+          </dialog>
+
           <h2 class="experiences-header">EXPERIENCES</h2>
           <div class="add-new-experience-btn">
             <button><i class="fa-solid fa-plus"></i> ADD EXPERIENCE</button>
           </div>
-          <div class="all-experiences">
-            <div class="experience">
-              <h3 class="experience-job-title">Associate Software Engineer</h3>
-              <div class="experience-job-company"><b>Company -</b> <span></span></div>
-              <div class="experience-job-skills"><b>Skills required -</b> <span></span></div>
-              <div class="experience-job-years"><b>Years -</b> <span></span></div>
-              <div class="experience-job-btns">
-                <button class="experience-delete-btn">Delete</button>
-                <button class="experience-update-btn">Update</button>
-              </div>
-            </div>
+          <div class="all-experiences"></div>
+        </div>
+      </div>
 
-            
+      <!-- SKILLS -->
+
+      <div class="skills">
+        <div class="skills-inner">
+          <h2 class="skills-header">SKILLS</h2>
+          <div class="add-new-skill-btn">
+            <form action="">
+              <input
+                type="text"
+                class="add-new-skill-input"
+                name="add-new-skill-input"
+                id="add-new-skill-input"
+              />
+              <button><i class="fa-solid fa-plus"></i> ADD SKILL</button>
+            </form>
           </div>
+          <ul class="all-skills">
+            <!-- <li><span></span><button class="skill-delete-btn">Delete</button></li> -->
+          </ul>
         </div>
       </div>
 
@@ -459,10 +620,10 @@
             Ready to discuss a project or collaboration? Let's connect!
           </div>
           <div class="contact-links">
-            <a href="https://wa.me/03344109169"
+            <a class="user-whatsapp" href="https://wa.me/03344109169"
               ><i class="fa-brands fa-whatsapp"></i
             ></a>
-            <a href="mailto://saadatifdev@gmail.com"
+            <a class="user-email" href="mailto://saadatifdev@gmail.com"
               ><i class="fa-regular fa-envelope"></i
             ></a>
           </div>

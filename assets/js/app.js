@@ -1,40 +1,49 @@
-const usersData = [];
-let userProjectsData = [
-  {
-    projectId: 1,
-    projectHeading: "Kallyas Project",
-    projectDescription:
-      "The Kallyas project, crafted with HTML and CSS, has been a valuable learning experience. CSS, particularly flexbox, has been a focus, and though I encountered challenges, I overcame them by diligently seeking solutions on YouTube and Stack Overflow.",
-    projectImageLink: "./assets/images/kallyas-project-img.PNG",
-    projectTags: ["coding", "programming"],
-    projectLanguages: ["C++", "Java"],
-    projectFrameworks: ["Express.js", "Bootstrap"],
-  },
-  {
-    projectId: 2,
-    projectHeading: "Tic-Tac-Toe Game",
-    projectDescription:
-      "I've successfully developed a web-based Tic-Tac-Toe game, employing HTML, CSS, and JavaScript for the frontend, and Node.js with Express.js for the backend. This project has been a rich learning experience, particularly in advancing my JavaScript skills. Beyond coding, I've also learned the qualities of a committed and persevering programmer. This project demanded dedication as I delved into complex logic using Javascript, and I remained persistent even when faced with challenges. It's also taught me the importance of adaptability, as I learned to accept different and unique solutions by seeking out ideas that I've gained from various platforms like Youtube and Stack Overflow. Through this project, I've not only created a fun game but also cultivated the essential attributes of a skilled programmer.",
-    projectImageLink: "./assets/images/rockpaperscissors-project-img.PNG",
-    projectTags: ["coding", "programming"],
-    projectLanguages: ["C++", "Java"],
-    projectFrameworks: ["Express.js", "Bootstrap"],
-  },
-  {
-    projectId: 3,
-    projectHeading: "General Store Software",
-    projectDescription:
-      "This a desktop application designed specifically for a general store to streamline daily operations. As a shopkeeper, I understand the complexities involved in managing inventory, transactions and other operations, so I embarked on creating a solution. This software is made in Java language, using Java-FX library which is specifically used for creating client-side desktop applications. As for storing data, MySQL database was integrated with this application. This project was made by me and my university friend. And together we learned a key lesson to work as a team. My university friend and I collaborated effectively, addressing challenges, sharing ideas, and establishing a smooth workflow. And for daily report, we used to do daily meetings.",
-    projectImageLink: "./assets/images/generalstoresoftware-project-img.jpg",
-    projectTags: ["coding", "programming"],
-    projectLanguages: ["C++", "Java"],
-    projectFrameworks: ["Express.js", "Bootstrap"],
-  },
-];
+const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+let userProjectsData = JSON.parse(localStorage.getItem("userProjectsData"));
+// userProjectData
+// if(userProjectsData.length > 0) {
+//   userProjectsData = userProjectsData.filter((project) => project.userId === loggedInUser.userId);
+// }
+
+// let userProjectsData = [
+// {
+//   userId: loggedInUser.userId,
+//   projectId: 1,
+//   projectHeading: "Kallyas Project",
+//   projectDescription:
+//     "The Kallyas project, crafted with HTML and CSS, has been a valuable learning experience. CSS, particularly flexbox, has been a focus, and though I encountered challenges, I overcame them by diligently seeking solutions on YouTube and Stack Overflow.",
+//   projectImageLink: "./assets/images/kallyas-project-img.PNG",
+//   projectTags: ["coding", "programming"],
+//   projectLanguages: ["C++", "Java"],
+//   projectFrameworks: ["Express.js", "Bootstrap"],
+// },
+// {
+//   userId: loggedInUser.userId,
+//   projectId: 2,
+//   projectHeading: "Tic-Tac-Toe Game",
+//   projectDescription:
+//     "I've successfully developed a web-based Tic-Tac-Toe game, employing HTML, CSS, and JavaScript for the frontend, and Node.js with Express.js for the backend. This project has been a rich learning experience, particularly in advancing my JavaScript skills. Beyond coding, I've also learned the qualities of a committed and persevering programmer. This project demanded dedication as I delved into complex logic using Javascript, and I remained persistent even when faced with challenges. It's also taught me the importance of adaptability, as I learned to accept different and unique solutions by seeking out ideas that I've gained from various platforms like Youtube and Stack Overflow. Through this project, I've not only created a fun game but also cultivated the essential attributes of a skilled programmer.",
+//   projectImageLink: "./assets/images/rockpaperscissors-project-img.PNG",
+//   projectTags: ["coding", "programming"],
+//   projectLanguages: ["C++", "Java"],
+//   projectFrameworks: ["Express.js", "Bootstrap"],
+// },
+// {
+//   userId: loggedInUser.userId,
+//   projectId: 3,
+//   projectHeading: "General Store Software",
+//   projectDescription:
+//     "This a desktop application designed specifically for a general store to streamline daily operations. As a shopkeeper, I understand the complexities involved in managing inventory, transactions and other operations, so I embarked on creating a solution. This software is made in Java language, using Java-FX library which is specifically used for creating client-side desktop applications. As for storing data, MySQL database was integrated with this application. This project was made by me and my university friend. And together we learned a key lesson to work as a team. My university friend and I collaborated effectively, addressing challenges, sharing ideas, and establishing a smooth workflow. And for daily report, we used to do daily meetings.",
+//   projectImageLink: "./assets/images/generalstoresoftware-project-img.jpg",
+//   projectTags: ["coding", "programming"],
+//   projectLanguages: ["C++", "Java"],
+//   projectFrameworks: ["Express.js", "Bootstrap"],
+// },
+// ];
 
 // __________CHECKING LOGIN & LOGOUT__________
 
-const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+// const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 const navbarLogoutBtn = document.querySelector(".navbar-logout-btn");
 
 if (loggedInUser) {
@@ -53,29 +62,90 @@ navbarLogoutBtn.addEventListener("click", () => {
 const allProjectsSection = document.querySelector(
   ".projects .projects-inner .all-projects"
 );
+let updateProjectDataForm = document.querySelector(
+  ".update-project-inner form"
+);
+let updateProjectDataFormBtn = document.querySelector(
+  ".update-project-inner form button"
+);
+let updateProjectFrameworksContainer = document.querySelector(
+  ".update-project-frameworks-container"
+);
+let updateProjectFrameworksInput = document.querySelector(
+  ".update-project-frameworks-input input"
+);
+let updateProjectFrameworksAdd = document.querySelector(
+  ".update-project-frameworks-input a"
+);
+
+let updateProjectLanguagesContainer = document.querySelector(
+  ".update-project-languages-container"
+);
+let updateProjectLanguagesInput = document.querySelector(
+  ".update-project-languages-input input"
+);
+let updateProjectLanguagesAdd = document.querySelector(
+  ".update-project-languages-input a"
+);
+
+let updateProjectTagsContainer = document.querySelector(
+  ".update-project-tags-container"
+);
+let updateProjectTagsInput = document.querySelector(
+  ".update-project-tags-input input"
+);
+let updateProjectTagsAdd = document.querySelector(
+  ".update-project-tags-input a"
+);
+// project's input field
+let updateProjectFormTitleInput = document.querySelector(
+  ".update-project-inner form #update-project-title"
+);
+
+let updateProjectFormDescriptionInput = document.querySelector(
+  ".update-project-inner form #update-project-description"
+);
+let updateProjectFormImgSrcInput = document.querySelector(
+  ".update-project-inner form #update-project-img-src"
+);
+
+let userProjectDataForUpdate;
+
+updateProjectFrameworksAdd.addEventListener("click", (e) => {
+  e.stopPropagation();
+  console.log("FW ADDEVENTLISTENER");
+  userProjectDataForUpdate.value.projectFrameworks.push(
+    updateProjectFrameworksInput.value
+  );
+  updateDialogRefreshExtrasList(
+    updateProjectFrameworksContainer,
+    userProjectDataForUpdate.value.projectFrameworks
+  );
+});
+
+updateProjectLanguagesAdd.addEventListener("click", (e) => {
+  e.stopPropagation();
+  userProjectDataForUpdate.value.projectLanguages.push(
+    updateProjectLanguagesInput.value
+  );
+  updateDialogRefreshExtrasList(
+    updateProjectLanguagesContainer,
+    userProjectDataForUpdate.value.projectLanguages
+  );
+});
+updateProjectTagsAdd.addEventListener("click", (e) => {
+  e.stopPropagation();
+  userProjectDataForUpdate.value.projectTags.push(updateProjectTagsInput.value);
+  updateDialogRefreshExtrasList(
+    updateProjectTagsContainer,
+    userProjectDataForUpdate.value.projectTags
+  );
+});
 
 const refreshProjects = (itemsContainer, items) => {
+  if (items.length > 0)
+    items = items.filter((item) => item.userId === loggedInUser.userId);
   items.forEach((item) => {
-    // itemsContainer.innerHTML += `<article class="project" id=${item.projectId}>
-    // <div class="project-text">
-    //   <h3>${item.projectHeading}</h3>
-    //   <div>
-    //     <p>${item.projectDescription}</p>
-    //   </div>
-    //   <div class="project-btns">
-    //     <button class="btn-primary blue-gradient-text">See Live</button>
-    //     <button class="blue-gradient-text">Source Code</button>
-    //   </div>
-    //   <div class="project-update-delete-btns">
-    //     <button id=${item.projectId} class="project-delete-btn">Delete</button>
-    //     <button class="project-update-btn">Update</button>
-    //   </div>
-    // </div>
-    // <picture id=${item.projectId}>
-    //   <img src=${item.projectImageLink} alt="">
-    // </picture>
-    // </article>`;
-
     let newProject = document.createElement("article");
     newProject.classList.add("project");
     newProject.id = item.projectId;
@@ -109,156 +179,154 @@ const refreshProjects = (itemsContainer, items) => {
 
     updateProjectBtn.addEventListener("click", () => {
       let projectId = updateProjectBtn.parentNode.parentNode.parentNode.id;
-      let userProjectData = userProjectsData.find(
-        (project) => project.projectId === Number(projectId)
-      );
+      // let userProjectData = userProjectsData.find(
+      //   (project) => project.projectId === Number(projectId)
+      // );
 
-      let updateProjectDataForm = document.querySelector(
-        ".update-project-inner form"
-      );
-      let updateProjectDataFormBtn = document.querySelector(
-        ".update-project-inner form button"
-      );
-      let updateProjectFrameworksContainer = document.querySelector(
-        ".update-project-frameworks-container"
-      );
-      let updateProjectFrameworksInput = document.querySelector(
-        ".update-project-frameworks-input input"
-      );
-      let updateProjectFrameworksAdd = document.querySelector(
-        ".update-project-frameworks-input a"
-      );
+      // storing project's data in an object rather than simply assigning it to a variable. as objects are passed (as a func arg or var) as reference which means when i change that func's or var's value the original object also changes and we needed it bcz we're implementing update frameworks, tags, etc outside of loop
+      let userProjectData = {
+        value: userProjectsData.find(
+          (project) => project.projectId === Number(projectId)
+        ),
+      };
 
-      let updateProjectLanguagesContainer = document.querySelector(
-        ".update-project-languages-container"
-      );
-      let updateProjectLanguagesInput = document.querySelector(
-        ".update-project-languages-input input"
-      );
-      let updateProjectLanguagesAdd = document.querySelector(
-        ".update-project-languages-input a"
-      );
+      userProjectDataForUpdate = userProjectData;
 
-      let updateProjectTagsContainer = document.querySelector(
-        ".update-project-tags-container"
-      );
-      let updateProjectTagsInput = document.querySelector(
-        ".update-project-tags-input input"
-      );
-      let updateProjectTagsAdd = document.querySelector(
-        ".update-project-tags-input a"
-      );
-      // project's input field
-      let updateProjectFormTitleInput = document.querySelector(
-        ".update-project-inner form #update-project-title"
-      );
-
-      let updateProjectFormDescriptionInput = document.querySelector(
-        ".update-project-inner form #update-project-description"
-      );
-      let updateProjectFormImgSrcInput = document.querySelector(
-        ".update-project-inner form #update-project-img-src"
-      );
-
-      updateProjectFormTitleInput.value = userProjectData.projectHeading;
+      updateProjectFormTitleInput.value = userProjectData.value.projectHeading;
       updateProjectFormDescriptionInput.value =
-        userProjectData.projectDescription;
-      updateProjectFormImgSrcInput.value = userProjectData.projectImageLink;
+        userProjectData.value.projectDescription;
+      // updateProjectFormImgSrcInput.value =
+      //   userProjectData.value.projectImageLink;
 
-      userProjectData.projectFrameworks.forEach((framework) => {
+      updateProjectFrameworksContainer.innerHTML = "";
+      userProjectData.value.projectFrameworks.forEach((framework) => {
+        console.log("FW FOREACH");
         updateProjectFrameworksContainer.innerHTML += `<span>${framework}</span>`;
         updateProjectFrameworksContainer.addEventListener("click", (e) => {
-          if(e.target.tagName === "SPAN") {
+          if (e.target.tagName === "SPAN") {
             let spanContent = e.target.textContent;
-            console.log(userProjectData.projectFrameworks);
-            userProjectData.projectFrameworks = userProjectData.projectFrameworks.filter((framework) => framework !== spanContent);
-            console.log(userProjectData.projectFrameworks);
-            
-            updateDialogRefreshExtrasList(updateProjectFrameworksContainer, userProjectData.projectFrameworks)
+            console.log(userProjectData.value.projectFrameworks);
+            userProjectData.value.projectFrameworks =
+              userProjectData.value.projectFrameworks.filter(
+                (framework) => framework !== spanContent
+              );
+            console.log(userProjectData.value.projectFrameworks);
+
+            updateDialogRefreshExtrasList(
+              updateProjectFrameworksContainer,
+              userProjectData.value.projectFrameworks
+            );
           }
           e.stopPropagation();
-        })
-      });      
-      updateProjectFrameworksAdd.addEventListener("click", (e) => {
-        userProjectData.projectFrameworks.push(updateProjectFrameworksInput.value);
-        updateDialogRefreshExtrasList(updateProjectFrameworksContainer, userProjectData.projectFrameworks)
-      })
+        });
+      });
 
-      userProjectData.projectLanguages.forEach((framework) => {
+      userProjectData.value.projectLanguages.forEach((framework) => {
         updateProjectLanguagesContainer.innerHTML += `<span>${framework}</span>`;
         updateProjectLanguagesContainer.addEventListener("click", (e) => {
-          if(e.target.tagName === "SPAN") {
+          if (e.target.tagName === "SPAN") {
             let spanContent = e.target.textContent;
-            console.log(userProjectData.projectLanguages);
-            userProjectData.projectLanguages = userProjectData.projectLanguages.filter((framework) => framework !== spanContent);
-            console.log(userProjectData.projectLanguages);
-            
-            updateDialogRefreshExtrasList(updateProjectLanguagesContainer, userProjectData.projectLanguages)
+            console.log(userProjectData.value.projectLanguages);
+            userProjectData.value.projectLanguages =
+              userProjectData.value.projectLanguages.filter(
+                (framework) => framework !== spanContent
+              );
+            console.log(userProjectData.value.projectLanguages);
+
+            updateDialogRefreshExtrasList(
+              updateProjectLanguagesContainer,
+              userProjectData.value.projectLanguages
+            );
           }
           e.stopPropagation();
-        })
+        });
       });
-      updateProjectLanguagesAdd.addEventListener("click", (e) => {
-        userProjectData.projectLanguages.push(updateProjectLanguagesInput.value);
-        updateDialogRefreshExtrasList(updateProjectLanguagesContainer, userProjectData.projectLanguages)
-      })
 
-      userProjectData.projectTags.forEach((framework) => {
+      userProjectData.value.projectTags.forEach((framework) => {
         updateProjectTagsContainer.innerHTML += `<span>${framework}</span>`;
         updateProjectTagsContainer.addEventListener("click", (e) => {
-          if(e.target.tagName === "SPAN") {
+          if (e.target.tagName === "SPAN") {
             let spanContent = e.target.textContent;
-            console.log(userProjectData.projectTags);
-            userProjectData.projectTags = userProjectData.projectTags.filter((framework) => framework !== spanContent);
-            console.log(userProjectData.projectTags);
-            
-            updateDialogRefreshExtrasList(updateProjectTagsContainer, userProjectData.projectTags)
+            console.log(userProjectData.value.projectTags);
+            userProjectData.value.projectTags =
+              userProjectData.value.projectTags.filter(
+                (framework) => framework !== spanContent
+              );
+            console.log(userProjectData.value.projectTags);
+
+            updateDialogRefreshExtrasList(
+              updateProjectTagsContainer,
+              userProjectData.value.projectTags
+            );
           }
           e.stopPropagation();
-        })
+        });
       });
-      updateProjectTagsAdd.addEventListener("click", (e) => {
-        userProjectData.projectTags.push(updateProjectTagsInput.value);
-        updateDialogRefreshExtrasList(updateProjectTagsContainer, userProjectData.projectTags)
-      })
 
-      let updateProjectForm = document.querySelector(".update-project-inner form");
+      let updateProjectForm = document.querySelector(
+        ".update-project-inner form"
+      );
       updateProjectForm.addEventListener("submit", (e) => {
-
-        e.preventDefault()
-
-
+        e.stopPropagation();
+        e.preventDefault();
         if (
           updateProjectFormTitleInput.value === "" ||
           updateProjectFormDescriptionInput.value === "" ||
           updateProjectFormImgSrcInput.value === "" ||
-          userProjectData.projectTags.length === 0 ||
-          userProjectData.projectLanguages.length === 0 ||
-          userProjectData.projectFrameworks.length === 0
+          userProjectData.value.projectTags.length === 0 ||
+          userProjectData.value.projectLanguages.length === 0 ||
+          userProjectData.value.projectFrameworks.length === 0
         ) {
           alert("Fill in the empty fields.");
         } else {
-          userProjectData.projectHeading = updateProjectFormTitleInput.value;
-          userProjectData.projectDescription = updateProjectFormDescriptionInput.value;
-          userProjectData.projectImageLink = updateProjectFormImgSrcInput.value;
+          userProjectData.value.projectHeading =
+            updateProjectFormTitleInput.value;
+          userProjectData.value.projectDescription =
+            updateProjectFormDescriptionInput.value;
+          // userProjectData.value.projectImageLink =
+          //   updateProjectFormImgSrcInput.value;
+          let imgFile = updateProjectFormImgSrcInput.files[0];
+          let reader = new FileReader();
+          reader.onload = function (e) {
+            userProjectData.value.projectImageLink = e.target.result;
 
-          let i = userProjectsData.findIndex((p) => p.projectId === userProjectData.projectId)
-          userProjectsData[i] = userProjectData;
-          addNewDataAndRefresh(userProjectData, allProjectsContainer);
+            let i = userProjectsData.findIndex(
+              (p) => p.projectId === userProjectData.value.projectId
+            );
+            userProjectsData[i] = userProjectData.value;
+            localStorage.setItem(
+              "userProjectsData",
+              JSON.stringify(userProjectsData)
+            );
+  
+            addNewDataAndRefresh(userProjectData.value, allProjectsContainer);
+  
+            updateProjectModal.close();
 
+          };
+          reader.readAsDataURL(imgFile);
 
-      updateProjectModal.close();
+          // let i = userProjectsData.findIndex(
+          //   (p) => p.projectId === userProjectData.value.projectId
+          // );
+          // userProjectsData[i] = userProjectData.value;
+          // localStorage.setItem(
+          //   "userProjectsData",
+          //   JSON.stringify(userProjectsData)
+          // );
 
-      // updateProjectFormTitleInput.value = ""
-      //     updateProjectFormDescriptionInput.value = ""
-      //     updateProjectFormImgSrcInput.value = ""
+          // addNewDataAndRefresh(userProjectData.value, allProjectsContainer);
+
+          // updateProjectModal.close();
+
+          // updateProjectFormTitleInput.value = ""
+          //     updateProjectFormDescriptionInput.value = ""
+          //     updateProjectFormImgSrcInput.value = ""
           updateProjectLanguagesContainer.innerHTML = "";
           updateProjectFrameworksContainer.innerHTML = "";
           updateProjectTagsContainer.innerHTML = "";
-
         }
-
-      })
+      });
 
       updateProjectModal.showModal();
     });
@@ -275,6 +343,10 @@ const refreshProjects = (itemsContainer, items) => {
 
       userProjectsData = userProjectsData.filter(
         (project) => project.projectId !== Number(projectDelBtn.id)
+      );
+      localStorage.setItem(
+        "userProjectsData",
+        JSON.stringify(userProjectsData)
       );
 
       allProjectsContainer.innerHTML = "";
@@ -336,28 +408,6 @@ const refreshProjects = (itemsContainer, items) => {
   });
 };
 refreshProjects(allProjectsSection, userProjectsData);
-// userProjectsData.forEach((userProject) => {
-//   refreshProjects(allProjectsSection, userProject);
-// allProjectsSection.innerHTML += `<article class="project" id=${userProject.projectId}>
-//   <div class="project-text">
-//     <h3>${userProject.projectHeading}</h3>
-//     <div>
-//       <p>${userProject.projectDescription}</p>
-//     </div>
-//     <div class="project-btns">
-//       <button class="btn-primary blue-gradient-text">See Live</button>
-//       <button class="blue-gradient-text">Source Code</button>
-//     </div>
-//     <div class="project-update-delete-btns">
-//       <button id=${userProject.projectId} class="project-delete-btn">Delete</button>
-//       <button class="project-update-btn">Update</button>
-//     </div>
-//   </div>
-//   <picture id=${userProject.projectId}>
-//     <img src=${userProject.projectImageLink} alt="">
-//   </picture>
-//   </article>`;
-// });
 
 // __________Project's Modal to display all details of a project__________
 
@@ -574,7 +624,6 @@ const addNewProjectframeworksBtn = document.querySelector(
 );
 let userProjectframeworks = [];
 
-
 addNewProjectframeworksBtn.addEventListener("click", (event) => {
   event.stopPropagation();
   let addNewProjectframeworksInputValue = addNewProjectframeworksInput.value;
@@ -596,8 +645,6 @@ addNewProjectframeworksBtn.addEventListener("click", (event) => {
     }
   });
 });
-
-
 
 let addNewProjectSubmitBtn = document.querySelector(
   ".add-new-project-inner button"
@@ -622,22 +669,50 @@ addNewProjectForm.addEventListener("submit", (e) => {
   ) {
     alert("Fill in the empty fields.");
   } else {
-    let data = {
-      projectId: generateId(),
-      projectHeading: addNewProjectTitle.value,
-      projectDescription: addNewProjectDescription.value,
-      projectImageLink: addNewProjectImgSrc.value,
-      projectTags: userProjectTags,
-      projectLanguages: userProjectlanguages,
-      projectFrameworks: userProjectframeworks,
-    };
+    let imgFile = addNewProjectImgSrc.files[0];
+    let reader = new FileReader();
+    reader.onload = function (e) {
+      let data = {
+        userId: loggedInUser.userId,
+        projectId: generateId(),
+        projectHeading: addNewProjectTitle.value,
+        projectDescription: addNewProjectDescription.value,
+        projectImageLink: e.target.result,
+        projectTags: userProjectTags,
+        projectLanguages: userProjectlanguages,
+        projectFrameworks: userProjectframeworks,
+      };
 
+      userProjectsData.push(data);
+      localStorage.setItem(
+        "userProjectsData",
+        JSON.stringify(userProjectsData)
+      );
+
+      addNewDataAndRefresh(data, allProjectsContainer);
+      addNewProjectModal.close();
+    };
+    reader.readAsDataURL(imgFile);
+
+    // let data = {
+    //   userId: loggedInUser.userId,
+    //   projectId: generateId(),
+    //   projectHeading: addNewProjectTitle.value,
+    //   projectDescription: addNewProjectDescription.value,
+    //   projectImageLink: addNewProjectImgSrc.value,
+    //   projectTags: userProjectTags,
+    //   projectLanguages: userProjectlanguages,
+    //   projectFrameworks: userProjectframeworks,
+    // };
+
+    // // userProjectsData.push(data);
+    // // allProjectsContainer.innerHTML = "";
+    // // refreshProjects(allProjectsContainer, userProjectsData);
+    // // addNewProjectModal.close();
     // userProjectsData.push(data);
-    // allProjectsContainer.innerHTML = "";
-    // refreshProjects(allProjectsContainer, userProjectsData);
-    // addNewProjectModal.close();
-    userProjectsData.push(data);
-    addNewDataAndRefresh(data, allProjectsContainer);
+    // localStorage.setItem("userProjectsData", JSON.stringify(userProjectsData));
+
+    // addNewDataAndRefresh(data, allProjectsContainer);
   }
 });
 
@@ -658,52 +733,14 @@ const generateId = () => {
 
 const updateDialogRefreshExtrasList = (extrasContainer, extrasData) => {
   extrasContainer.innerHTML = "";
-  extrasData.forEach((projectExtra) => extrasContainer.innerHTML += `<span>${projectExtra}</span>`);
-}
+  extrasData.forEach(
+    (projectExtra) =>
+      (extrasContainer.innerHTML += `<span>${projectExtra}</span>`)
+  );
+};
 
 const addNewDataAndRefresh = (data, container) => {
-    container.innerHTML = "";
-    refreshProjects(container, userProjectsData);
-    addNewProjectModal.close();
-  }
-// const addNewProjectframeworksInput = document.querySelector(
-//   ".add-new-project-frameworks-input input"
-// );
-// const addNewProjectframeworksContainer = document.querySelector(
-//   ".add-new-project-frameworks-container"
-// );
-// const addNewProjectframeworks = document.querySelectorAll(
-//   ".add-new-project-frameworks-container span"
-// );
-// const addNewProjectframeworksBtn = document.querySelector(
-//   ".add-new-project-frameworks-input a"
-// );
-// let userProjectframeworks = [];
-// const addNewProjectAddExtras = (extraData, addNewExtraBtn, addExtraInput, addExtrasContainer) => {
-//   addNewExtraBtn.addEventListener("click", (event) => {
-//     event.stopPropagation();
-//     let addExtraInputValue =  addExtraInput.value;
-//     extraData.push(addExtraInputValue);
-  
-//     addExtrasContainer.innerHTML += `<span>${addExtraInputValue}</span>`;
-//     console.log(extraData);
-  
-//     addExtrasContainer.addEventListener("click", (e) => {
-//       event.stopPropagation();
-  
-//       if (e.target.tagName === "SPAN") {
-//         let spanContent = e.target.textContent;
-//         extraData = extraData.filter(
-//           (tag) => tag !== spanContent
-//         );
-//         console.log(extraData);
-//         addExtrasContainer.removeChild(e.target);
-//     return extraData
-
-//       }
-//     });
-
-//     return extraData
-//   });
-
-// }
+  container.innerHTML = "";
+  refreshProjects(container, userProjectsData);
+  addNewProjectModal.close();
+};
